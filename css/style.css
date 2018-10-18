@@ -1,0 +1,361 @@
+body {
+	margin: 0;
+	overflow-x: hidden;
+}
+* {
+	box-sizing: border-box;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-family: 'Averia Libre', cursive;
+	font-weight: 300;
+}
+div.stick {
+	width: 1px;
+	height: 100vh;
+	position: absolute;
+	border-right: 5px dashed rebeccapurple;
+	background: #30c1bc;
+	z-index: 2;
+	-webkit-clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+	clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+div.stick.active {
+	animation: stick_one 1s cubic-bezier(0.9, 0.0, 0.58, 1) forwards , stick_two 0.3s cubic-bezier(0.32, 0.01, 0.09, 1.01) forwards 1s;
+}
+@keyframes stick_one {
+	100% {
+		-webkit-clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+		clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+	}
+}
+@keyframes stick_two {
+	0% {
+		-webkit-clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+		clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
+	}
+	100% {
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+		clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+}
+div#scene {
+	width: 100%;
+	height: 100vh;
+	background: rgba(165, 42, 42, 0.4);
+	position: relative;
+	overflow: hidden;
+	z-index: 999;
+	transition: 1s cubic-bezier(0.9, 0.0, 0.58, 1);
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);	
+	/*display: none;*/
+}
+div#scene.active {
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+div#scene .luka {
+	animation: luka 1s forwards;
+}
+@keyframes luka {
+	100% {
+		height: 0;
+	}
+}
+div.back {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+div.front {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+div#scene div.back h2{
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: white;
+	margin: 0;
+	color: rgb(100,100,100);
+	color: #ad5773;
+	text-transform: uppercase;
+	white-space: nowrap;
+	font-size: 30px;
+	z-index: 5;
+	letter-spacing: 3px;
+}
+div#scene div.back div.brain {
+	width: 250px;
+	height: 300px;
+	background: url(../img/skull2.png) no-repeat;
+	background-position: center;
+	background-size: contain;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+div#scene div.front h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: white;
+	margin: 0;
+	font-size: 50px;
+	text-transform: uppercase;
+	white-space: nowrap;
+	font-size: 30px;
+	z-index: 5;
+	letter-spacing: 3px;
+}
+div#scene div.front div.brain {
+	width: 250px;
+	height: 300px;
+	background: url(../img/skull.png) no-repeat;
+	background-position: center;
+	background-size: contain;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+div.stick_1 {
+	width: 1px;
+	height: 0%;
+	border-right: 1px dotted #00ffd2;
+	position: absolute;
+	bottom: 0;
+	left: 33.3%;
+}
+div.stick_1.active {
+	height: 100%;
+	transition: 1.5s;
+}
+div.stick_2 {
+	width: 1px;
+	height: 0%;
+	border-right: 1px dotted #00ffd2;
+	position: absolute;
+	bottom: 0;
+	left: 66.6%;
+}
+div.stick_2.active {
+	height: 100%;
+	transition: 1.5s;
+}
+div.section {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	/*background: #00ffd2;*/
+	z-index: -1;
+	/*padding: 60px;*/
+	overflow: hidden;
+}
+div.section div.body {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: black url(../img/asfalt-light.png);
+	top: 0%;
+	left: 0%;
+	/*animation: 1s infinite noise;*/
+}
+div.section div.body:after {
+	content: '';
+	width: 1000%;
+	height: 1000%;
+	position: absolute;
+	top: -200%;
+	left: -200%;
+	background: url(../img/asfalt-light.png);
+	display: inline-block;
+}
+div#ascrail2000 {
+	z-index: 999999999 !important;
+}
+::-webkit-scrollbar {
+    width: 0px;
+}
+div.main-arrow-box {
+	position: fixed;
+	z-index: 99999;
+	color: white;
+	left: 50%;
+	bottom: 20px;
+	transform: translateX(-50%) rotate(-90deg);
+	user-select: none;
+	cursor: pointer;
+}
+div.main-arrow-box svg.back-arrow {
+	animation: arrow 1.5s ease-out infinite;
+}
+@keyframes arrow {
+	from {
+		transform: translateX(0);
+		opacity: 1;
+	}
+	to {
+		transform: translateX(20%);
+		opacity: 0;
+	}
+}
+span.typed-cursor.typed-cursor--blink {
+	display: none !important;
+}
+body.active div.content {
+	display: block;
+}
+div.content {
+	width: 100%;
+	height: 100%;
+	/*overflow: auto;*/
+	overflow-x: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+div.hi {
+	width: 50%;
+	margin: auto;
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 60px;
+	padding-top: 100px;
+	white-space: nowrap;
+}
+div.hi span {
+	display: inline-block;
+	visibility: hidden;
+	transform: translateY();
+	animation:  ball .7s cubic-bezier(0.755, 0.05, 0.855, 0.06) forwards;
+}
+div.hi span.space {
+	margin-left: 30px;
+	display: inline-block;
+}
+@keyframes ball {
+	from {
+		transform: translateY(-250%);
+		visibility: visible;
+	}
+	80% {
+		transform: translateY(10%);
+	}
+	90% { transform: translateY(-40%); }
+	100% { transform: translateY(0); visibility: visible;}
+}
+p.about_us {
+	width: 60%;
+	margin: auto;
+	line-height: 27px;
+	padding-top: 100px;
+	color: #eee;
+	letter-spacing: 2px;
+	font-size: 24px;
+	height: 370px;
+}
+div.progress {
+	width: 15px;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	background: rebeccapurple;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+body.active div.progress {
+	animation: down 2s cubic-bezier(0.1, 0, 0.09, 0.99) forwards .8s;
+}
+@keyframes down {
+	from {
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	}
+	to {
+		-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	}
+}
+div.progress-stick {
+	width: 100%;
+	height: 20%;
+	background: #30c1bc;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+div#projects {
+  width: 100%;
+  position: relative;
+  padding-top: 150px;
+}
+div.row {
+  width: 100%;
+  position: relative;
+}
+div.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+div.row div.left {
+  width: 50%;
+  float: left;
+  padding: 60px;
+  padding-right: 0;
+}
+div.row div.left div.project {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+div.project div.back {
+  width: 90%;
+  height: 90%;
+  left: 10%;
+  top: 10%;
+  position: absolute;
+  background: #30c1bc;
+}
+div.project div.main-pro {
+  width: 90%;
+  height: 90%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: url(http://picsum.photos/900);
+  background-position: center;
+  background-size: cover;
+  z-index: 2;
+}
+div.project div.main-pro div.front {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.42);
+	background: #421f7945;
+}
+@keyframes up {
+	from {
+		transform: translateY(30%); 
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+.up {
+	animation: up 1s both;
+}
